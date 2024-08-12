@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class PlacementSystem : MonoBehaviour
 {
     [SerializeField]
-    GameObject mouseIndicator, cellIndicator;
+    GameObject mouseIndicator;
     [SerializeField]
     private InputManager inputManager;
     [SerializeField]
@@ -21,9 +21,11 @@ public class PlacementSystem : MonoBehaviour
     //Pisahin Data antara Floor dan Furniture, jadi dia bikin 2 Grid Data
     private GridData floorData, furnitureData;
 
-    private Renderer previewRenderer;
-
     private List<GameObject> placedGameObject = new List<GameObject>();
+
+    [SerializeField] private PreviewSystem previewSystem;
+
+    private Vector3Int lastdetectedPosition = Vector3Int.zero;
 
     private void Start()
     {
@@ -31,8 +33,6 @@ public class PlacementSystem : MonoBehaviour
 
         floorData = new GridData();
         furnitureData = new GridData();
-
-        previewRenderer = cellIndicator.GetComponentInChildren<Renderer>();
     }
 
     public void StartPlacement(int ID)
@@ -46,7 +46,8 @@ public class PlacementSystem : MonoBehaviour
             Debug.LogError($"No ID Found{ID}");
             return;
         }
-        cellIndicator.SetActive(true);
+        //cellIndicator.SetActive(true);
+        previewSystem.StartShowingPlacementPreview(database.objectsData[selectedObjectIndex].Prefab, database.objectsData[selectedObjectIndex].Size);
         gridVisualization.SetActive(true);
         inputManager.OnClicked += PlaceStructure;
         inputManager.OnExit += StopPlacement;
@@ -78,6 +79,8 @@ public class PlacementSystem : MonoBehaviour
         GridData selectedData = database.objectsData[selectedObjectIndex].ID == 0 ? floorData : furnitureData;
 
         selectedData.AddObjectAt(gridPosition, database.objectsData[selectedObjectIndex].Size, database.objectsData[selectedObjectIndex].ID, placedGameObject.Count - 1);
+
+        previewSystem.UpdatePosition(grid.CellToWorld(gridPosition), false);
     }
 
     private bool CheckPlacementValidity(Vector3Int gridPosition, int selectedObjectIndex)
@@ -91,10 +94,13 @@ public class PlacementSystem : MonoBehaviour
     private void StopPlacement()
     {
         selectedObjectIndex = -1;
-        cellIndicator.SetActive(false);
+        //cellIndicator.SetActive(false);
+        previewSystem.StopShowingPreview();
         gridVisualization.SetActive(false);
         inputManager.OnClicked -= PlaceStructure;
         inputManager.OnExit -= StopPlacement;
+
+        lastdetectedPosition = Vector3Int.zero;
     }
 
     private void Update()
@@ -107,10 +113,14 @@ public class PlacementSystem : MonoBehaviour
         Vector3 mousePosition = inputManager.GetSelectedMapPosition();
         Vector3Int gridPosition = grid.WorldToCell(mousePosition);
 
-        bool placementValidity = CheckPlacementValidity(gridPosition, selectedObjectIndex);
-        previewRenderer.material.color = placementValidity ? Color.white : Color.red;
+        if (lastdetectedPosition != gridPosition)
+        {
+            bool placementValidity = CheckPlacementValidity(gridPosition, selectedObjectIndex);
 
-        mouseIndicator.transform.position = mousePosition;
-        cellIndicator.transform.position = grid.CellToWorld(gridPosition);
+            mouseIndicator.transform.position = mousePosition;
+
+            previewSystem.UpdatePosition(grid.CellToWorld(gridPosition), placementValidity);
+            lastdetectedPosition = gridPosition;
+        }
     }
 }

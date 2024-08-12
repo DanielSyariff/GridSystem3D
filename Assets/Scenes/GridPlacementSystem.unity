@@ -266,6 +266,7 @@ Transform:
   - {fileID: 267480785}
   - {fileID: 598055433}
   - {fileID: 1895047745}
+  - {fileID: 1160982397}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &330585543
@@ -1576,6 +1577,54 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1111827926}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1160982396
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1160982397}
+  - component: {fileID: 1160982398}
+  m_Layer: 0
+  m_Name: PreviewSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1160982397
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1160982396}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 282171881}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1160982398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1160982396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e61609ed0abead46a6379c75a366761, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  previewOffsetY: 0.06
+  cellIndicator: {fileID: 1895047744}
+  previewMaterialPrefab: {fileID: 2100000, guid: 3237671c2564ffc428712fa4c77b83a3,
+    type: 2}
 --- !u!1 &1164268151
 GameObject:
   m_ObjectHideFlags: 0
@@ -2229,11 +2278,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseIndicator: {fileID: 267480784}
-  cellIndicator: {fileID: 1895047744}
   inputManager: {fileID: 711572746}
   grid: {fileID: 998040877}
   database: {fileID: 11400000, guid: 4fa3223c81e9d9749bf4f41e0b9fb2a3, type: 2}
   gridVisualization: {fileID: 1111827926}
+  previewSystem: {fileID: 1160982398}
 --- !u!1001 &2141972887
 PrefabInstance:
   m_ObjectHideFlags: 0
