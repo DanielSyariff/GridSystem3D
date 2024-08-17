@@ -27,6 +27,9 @@ public class PlacementSystem : MonoBehaviour
 
     IBuildingState buildingState;
 
+    [SerializeField]
+    private SoundFeedback soundFeedback;
+
     private void Start()
     {
         StopPlacement();
@@ -46,8 +49,18 @@ public class PlacementSystem : MonoBehaviour
                                            database,
                                            floorData,
                                            furnitureData,
-                                           objectPlacer);
+                                           objectPlacer, 
+                                           soundFeedback);
         
+        inputManager.OnClicked += PlaceStructure;
+        inputManager.OnExit += StopPlacement;
+    }
+    public void StartRemoving()
+    {
+        StopPlacement();
+        gridVisualization.SetActive(true);
+        buildingState = new RemovingState(grid, previewSystem, floorData, furnitureData, objectPlacer, soundFeedback);
+
         inputManager.OnClicked += PlaceStructure;
         inputManager.OnExit += StopPlacement;
     }
