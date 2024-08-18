@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.AI;
 using System.Collections.Generic;
 public class ObjectPlacer : MonoBehaviour
 {
@@ -11,6 +12,20 @@ public class ObjectPlacer : MonoBehaviour
         GameObject newObject = Instantiate(prefab);
         newObject.transform.position = position;
         placedGameObject.Add(newObject);
+
+        NavMeshAgent agent = newObject.GetComponentInChildren<NavMeshAgent>();
+        Debug.Log("Agent : " + agent);
+        if (agent != null)
+        {
+            agent.enabled = true;
+        }
+        CharMovement c = newObject.GetComponentInChildren<CharMovement>();
+        Debug.Log("Char : " + c);
+        if (c != null)
+        {
+            c.enabled = true;
+        }
+
         return placedGameObject.Count - 1;
     }
 

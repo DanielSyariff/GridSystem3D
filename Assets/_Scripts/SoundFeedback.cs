@@ -18,22 +18,22 @@ public class SoundFeedback : MonoBehaviour
 
     public void PlaySFX(SoundType type)
     {
-        switch (type)
-        {
-            case SoundType.click:
-                audioSource.PlayOneShot(clickSound);
-                break;
-            case SoundType.place:
-                audioSource.PlayOneShot(placeSound);
-                break;
-            case SoundType.remove:
-                audioSource.PlayOneShot(removeSound);
-                break;
-            case SoundType.wrongPlacement:
-                audioSource.PlayOneShot(wrongPlacementSound);
-                break;
-            default:
-                break;
-        }
+        //switch (type)
+        //{
+        //    case SoundType.click:
+        //        audioSource.PlayOneShot(clickSound);
+        //        break;
+        //    case SoundType.place:
+        //        audioSource.PlayOneShot(placeSound);
+        //        break;
+        //    case SoundType.remove:
+        //        audioSource.PlayOneShot(removeSound);
+        //        break;
+        //    case SoundType.wrongPlacement:
+        //        audioSource.PlayOneShot(wrongPlacementSound);
+        //        break;
+        //    default:
+        //        break;
+        //}
     }
 }

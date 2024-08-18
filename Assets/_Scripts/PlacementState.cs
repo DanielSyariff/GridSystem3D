@@ -69,7 +69,7 @@ public class PlacementState : IBuildingState
 
         selectedData.AddObjectAt(gridPosition, database.objectsData[selectedObjectIndex].Size, database.objectsData[selectedObjectIndex].ID, index);
 
-        previewSystem.UpdatePosition(grid.CellToWorld(gridPosition), false);
+        previewSystem.UpdatePosition(grid.CellToWorld(gridPosition), false);  
     }
     public void UpdateState(Vector3Int gridPosition)
     {

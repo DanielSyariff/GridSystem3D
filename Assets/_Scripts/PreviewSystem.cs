@@ -76,6 +76,15 @@ public class PreviewSystem : MonoBehaviour
         MoveCursor(position);
         ApplyFeedbackToCursor(validity);
     }
+    public void UpdateRotation(int rotation, Vector3 position, bool validity)
+    {
+        if (previewObject != null)
+        {
+            previewObject.transform.rotation = Quaternion.Euler(0, rotation, 0); // Rotasi pada sumbu Y
+        }
+        MoveCursor(position);
+        ApplyFeedbackToCursor(validity);
+    }
 
     private void ApplyFeedbackToPreview(bool validity)
     {
