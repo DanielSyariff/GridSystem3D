@@ -33,3 +33,18 @@ MonoBehaviour:
     <Size>k__BackingField: {x: 2, y: 1}
     <Prefab>k__BackingField: {fileID: 3493615974341626966, guid: c8183485a28237d4385a3c7ef8659faa,
       type: 3}
+  - <Name>k__BackingField: Selen
+    <ID>k__BackingField: 4
+    <Size>k__BackingField: {x: 1, y: 1}
+    <Prefab>k__BackingField: {fileID: 3756989599756376050, guid: c9b644848d9592647b559db7c8dce279,
+      type: 3}
+  - <Name>k__BackingField: Rosemi
+    <ID>k__BackingField: 5
+    <Size>k__BackingField: {x: 1, y: 1}
+    <Prefab>k__BackingField: {fileID: 1279099210351017630, guid: f72a9abd3715cbf49abcd485bbd1b2ed,
+      type: 3}
+  - <Name>k__BackingField: Pomu
+    <ID>k__BackingField: 6
+    <Size>k__BackingField: {x: 1, y: 1}
+    <Prefab>k__BackingField: {fileID: 6276942636735307334, guid: 72e0a6cf74327c34aa7ab9c458fd4c2c,
+      type: 3}

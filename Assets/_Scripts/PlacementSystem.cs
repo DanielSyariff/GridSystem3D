@@ -104,6 +104,7 @@ public class PlacementSystem : MonoBehaviour
     {
         if (buildingState == null)
         {
+            gridVisualization.SetActive(false);
             return;
         }
 
